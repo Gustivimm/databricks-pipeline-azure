@@ -1,0 +1,9 @@
+{
+	"name": "databricks-gustavo",
+	"location": "brazilsouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a9fac34c-e83a-4b7e-9151-eacbc328d13f",
+		"tenantId": "52e6fe17-afc7-4954-8f32-77be8332b18f"
+	}
+}
