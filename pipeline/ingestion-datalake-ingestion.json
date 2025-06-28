@@ -1,9 +1,9 @@
 {
-	"name": "datalake-ingestion",
+	"name": "ingestion-datalake-ingestion",
 	"properties": {
 		"activities": [
 			{
-				"name": "inbound-to-bronze",
+				"name": "ingestion-inbound-to-bronze",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
@@ -13,14 +13,21 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/gustivim@gmail.com/databricks-pipeline-azure/notebooks/inbound_to_bronze"
+				},
+				"linkedServiceName": {
+					"referenceName": "databricks_datafactory_link",
+					"type": "LinkedServiceReference"
+				}
 			},
 			{
-				"name": "bronze-to-silver",
+				"name": "ingestion-bronze-to-silver",
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
-						"activity": "inbound-to-bronze",
+						"activity": "ingestion-inbound-to-bronze",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -33,7 +40,14 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/gustivim@gmail.com/databricks-pipeline-azure/notebooks/bronze_to_silver"
+				},
+				"linkedServiceName": {
+					"referenceName": "databricks_datafactory_link",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"annotations": []
